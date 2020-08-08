@@ -1,0 +1,102 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  background-color: #e7e6e6;
+}
+
+h1 {
+  position: absolute;
+  left: 5vw;
+  font-size: 2rem;
+  font-weight: bolder;
+  color: lightgray;
+  text-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+  margin-bottom: 10px;
+}
+
+.game-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: hidden;
+  max-height: 32rem;
+  max-width: 15.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5vh;
+  border-radius: 4px;
+  -webkit-box-shadow: -4px -4px 6px #f3f1f1, 4px 4px 6px darkgray;
+          box-shadow: -4px -4px 6px #f3f1f1, 4px 4px 6px darkgray;
+}
+
+.game-screen .game-grid {
+  width: 1.35rem;
+  height: 1.35rem;
+  background-color: lightgray;
+  border: 0.1rem solid lightgray;
+}
+
+.game-screen .show-grid, .game-screen .fixed-grid {
+  border-radius: 4px;
+  background-color: whitesmoke;
+}
+
+#start-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 30vh;
+  left: 5vw;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  font-weight: lighter;
+  background-color: whitesmoke;
+  -webkit-box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+          box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+#stop-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 40vh;
+  left: 5vw;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  font-weight: lighter;
+  background-color: whitesmoke;
+  -webkit-box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+          box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+  color: gray;
+}
+
+#start-btn:active, #stop-btn:active {
+  color: lightblue;
+}
+
+#score {
+  position: absolute;
+  top: 12.5vh;
+  left: 5vw;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  color: lightgray;
+  text-shadow: -2px -2px 3px white, 2px 2px 3px #858484;
+  margin-bottom: 10px;
+}
+/*# sourceMappingURL=style.css.map */
