@@ -39,6 +39,10 @@ let game_over=false;
 let incremented_score=0;
 let tot_score=0;
 let pause=false;
+let running=false;
+let initial_mouse_position_x;
+let final_mouse_position_x;
+let move_mouse_position_x;
 let active_grids=document.querySelectorAll('.show-grid');
 const stop_btn=document.querySelector('#stop-btn');
 const start_btn=document.querySelector('#start-btn');
@@ -140,52 +144,121 @@ function give_score(){
 function Random_no() {
     return Math.floor((Math.random() * 4)+1);
 }
-
+ 
 //taking inputs
 //checking keypress inputs
 document.addEventListener('keydown',(event)=>{
-    event.preventDefault();
-    var key_code=event.keyCode;
-    //index of all the fixed grids
-    fixed_grids=grids.filter(grid=>grid.classList.contains('fixed-grid')).map(each=>grids.indexOf(each));
-    //index of al the acive grids
-    active_grids=grids.filter(grid=>grid.classList.contains('show-grid')).map(each=>grids.indexOf(each));
-    //left key
-    if(key_code===37){  
-        from_left-=1;
-        if(from_left<-1){
-            from_left=-1;
-        };
-        next_active_grids=active_grids.map(each=>each-1);
-        next_active_grids=next_active_grids.concat(active_grids.map(each=>each-1+width));
-        if(next_active_grids.some(each=>fixed_grids.includes(each))){
-            from_left+=1;
-        };
-    }
-    //up key to rotate
-    else if(key_code===38){ 
-        rotation_no+=1;
-        if(rotation_no>4){
-            rotation_no=1
-        };
-    }
-    //right key
-    else if(key_code===39){ 
-        //index of al the acive grids
-        active_grids=grids.filter(grid=>grid.classList.contains('show-grid')).map(each=>grids.indexOf(each));
-        if(active_grids.some(grid=>(grid+1)%10===0)){
-            //pass
-        }else{
-            from_left+=1;
-            next_active_grids=active_grids.map(each=>each+1);
-        }
-        next_active_grids=active_grids.map(each=>each-1);
-        next_active_grids=next_active_grids.concat(active_grids.map(each=>each+1+width));
-        if(next_active_grids.some(each=>fixed_grids.includes(each))){
-            from_left-=1;
+    if(running){
+        if(!pause){
+            event.preventDefault();
+            var key_code=event.keyCode;
+            //index of all the fixed grids
+            fixed_grids=grids.filter(grid=>grid.classList.contains('fixed-grid')).map(each=>grids.indexOf(each));
+            //index of al the acive grids
+            active_grids=grids.filter(grid=>grid.classList.contains('show-grid')).map(each=>grids.indexOf(each));
+            //left key
+            if(key_code===37){  
+                from_left-=1;
+                if(from_left<-1){
+                    from_left=-1;
+                };
+                next_active_grids=active_grids.map(each=>each-1);
+                next_active_grids=next_active_grids.concat(active_grids.map(each=>each-1+width));
+                if(next_active_grids.some(each=>fixed_grids.includes(each))){
+                    from_left+=1;
+                };
+            }
+            //up key to rotate
+            else if(key_code===38){ 
+                rotation_no+=1;
+                if(rotation_no>4){
+                    rotation_no=1
+                };
+            }
+            //right key
+            else if(key_code===39){ 
+                //index of al the acive grids
+                active_grids=grids.filter(grid=>grid.classList.contains('show-grid')).map(each=>grids.indexOf(each));
+                if(active_grids.some(grid=>(grid+1)%10===0)){
+                    //pass
+                }else{
+                    from_left+=1;
+                    next_active_grids=active_grids.map(each=>each+1);
+                }
+                next_active_grids=active_grids.map(each=>each-1);
+                next_active_grids=next_active_grids.concat(active_grids.map(each=>each+1+width));
+                if(next_active_grids.some(each=>fixed_grids.includes(each))){
+                    from_left-=1;
+                };
+            };          
         };
     };
-})
+});
+
+//mouse slide to move blocks
+document.addEventListener('mousedown',event=>{
+    if(running){
+        if(!pause){
+            block_moved=false;
+            initial_mouse_position_x=event.clientX;
+            document.addEventListener('mouseup',(event)=>{
+                if(!block_moved){
+                    final_mouse_position_x=event.clientX;
+                    move_mouse_position_x=final_mouse_position_x-initial_mouse_position_x;
+                    if(move_mouse_position_x>10){
+                        //index of all the fixed grids
+                        fixed_grids=grids.filter(grid=>grid.classList.contains('fixed-grid')).map(each=>grids.indexOf(each));
+                        //index of al the acive grids
+                        active_grids=grids.filter(grid=>grid.classList.contains('show-grid')).map(each=>grids.indexOf(each));
+                        if(active_grids.some(grid=>(grid+1)%10===0)){
+                            //pass
+                        }else{
+                            from_left+=1;
+                            next_active_grids=active_grids.map(each=>each+1);
+                        }
+                        next_active_grids=active_grids.map(each=>each-1);
+                        next_active_grids=next_active_grids.concat(active_grids.map(each=>each+1+width));
+                        if(next_active_grids.some(each=>fixed_grids.includes(each))){
+                            from_left-=1;
+                        };
+                    }
+                    else if((-10)>move_mouse_position_x){
+                        //index of all the fixed grids
+                        fixed_grids=grids.filter(grid=>grid.classList.contains('fixed-grid')).map(each=>grids.indexOf(each));
+                        //index of al the acive grids
+                        active_grids=grids.filter(grid=>grid.classList.contains('show-grid')).map(each=>grids.indexOf(each));
+                        from_left-=1;
+                        if(from_left<-1){
+                            from_left=-1;
+                        };
+                        next_active_grids=active_grids.map(each=>each-1);
+                        next_active_grids=next_active_grids.concat(active_grids.map(each=>each-1+width));
+                        if(next_active_grids.some(each=>fixed_grids.includes(each))){
+                            from_left+=1;
+                        };
+                    };
+                    block_moved=true;
+                    initial_mouse_position_x=final_mouse_position_x;
+                    final_mouse_position_x=0;
+                    move_mouse_position_x=0;
+                }; 
+                return;
+            });
+            return;
+        };
+    };
+});
+
+document.addEventListener('dblclick',event=>{
+    if(running){
+        if(!pause){
+            rotation_no+=1;
+            if(rotation_no>4){
+                rotation_no=1
+            };
+        };
+    };
+});
 
 //checking to pause the game
 stop_btn.addEventListener('click',()=>{
@@ -202,6 +275,7 @@ stop_btn.addEventListener('click',()=>{
 
 //starting the game
 start_btn.addEventListener('click',()=>{
+    running=true
     score.innerHTML="Score: 0";
     start_btn.innerHTML="Restart";
     choose_next_block();
