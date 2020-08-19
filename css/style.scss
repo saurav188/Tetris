@@ -92,3 +92,29 @@ h1{
                 2px 2px 3px rgb(133, 132, 132);
     margin-bottom: 10px;
 }
+@media screen and (max-width:720px){
+    h1{
+        position: relative;
+        margin-top: 10px;
+        left: 0px;
+    }
+    .game-screen{
+        position: relative;
+        top: -90px;
+    }
+    #start-btn{
+        position: relative;
+        top: -98px;
+        left: 130px;
+    }
+    #stop-btn{
+        position: relative;
+        top: -98px;
+        left:140px;
+    }
+    #score{
+        position: relative;
+        top: -60px;
+        left:-150px;
+    }
+}

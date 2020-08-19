@@ -13,7 +13,7 @@ h1 {
   font-size: 2rem;
   font-weight: bolder;
   color: lightgray;
-  text-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+  text-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
   margin-bottom: 10px;
 }
 
@@ -60,8 +60,8 @@ h1 {
   outline: none;
   font-weight: lighter;
   background-color: whitesmoke;
-  -webkit-box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
-          box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+  -webkit-box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+          box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
   color: gray;
   margin-bottom: 10px;
 }
@@ -80,8 +80,8 @@ h1 {
   outline: none;
   font-weight: lighter;
   background-color: whitesmoke;
-  -webkit-box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
-          box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+  -webkit-box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
+          box-shadow: -2px -2px 3px white, 2px 2px 3px darkgray;
   color: gray;
 }
 
@@ -98,5 +98,32 @@ h1 {
   color: lightgray;
   text-shadow: -2px -2px 3px white, 2px 2px 3px #858484;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 720px) {
+  h1 {
+    position: relative;
+    margin-top: 10px;
+    left: 0px;
+  }
+  .game-screen {
+    position: relative;
+    top: -90px;
+  }
+  #start-btn {
+    position: relative;
+    top: -98px;
+    left: 130px;
+  }
+  #stop-btn {
+    position: relative;
+    top: -98px;
+    left: 140px;
+  }
+  #score {
+    position: relative;
+    top: -60px;
+    left: -150px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

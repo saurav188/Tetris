@@ -249,6 +249,7 @@ document.addEventListener('mousedown',event=>{
     };
 });
 
+//double ckisk event
 document.addEventListener('dblclick',event=>{
     if(running){
         if(!pause){
