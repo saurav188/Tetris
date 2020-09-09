@@ -5,13 +5,14 @@ body{
     margin: 0px;
     text-align: center;
     background-color: rgb(231, 230, 230);
+    overflow: hidden;
 }
 h1{
     position: absolute;
     left:5vw;
     font-size: 2rem;
     font-weight: bolder;
-    color: lightgray;
+    color: gray;
     text-shadow: -2px -2px 3px white,
                 2px 2px 3px darkgray;
     margin-bottom: 10px;
@@ -87,20 +88,21 @@ h1{
     left:5vw;
     font-size: 1.5rem;
     font-weight: lighter;
-    color: lightgray;
+    color: gray;
     text-shadow: -2px -2px 3px white,
                 2px 2px 3px rgb(133, 132, 132);
     margin-bottom: 10px;
 }
 @media screen and (max-width:720px){
     h1{
+        font-size: 2rem;
         position: relative;
         margin-top: 10px;
         left: 0px;
     }
     .game-screen{
         position: relative;
-        top: -90px;
+        top: -80px;
     }
     #start-btn{
         position: relative;
@@ -110,11 +112,11 @@ h1{
     #stop-btn{
         position: relative;
         top: -98px;
-        left:140px;
+        left:-120px;
     }
     #score{
         position: relative;
-        top: -60px;
-        left:-150px;
+        top: -32.5px;
+        left: 0px;
     }
 }
